@@ -1,0 +1,91 @@
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  h2 {
+    color: $primary;
+    font-size: 3.5rem;
+    font-weight: bolder;
+  }
+  .grid-card {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+    width: 100%;
+    z-index: 2;
+
+    .card {
+      max-width: 25%;
+      box-shadow: 0 0 2px 1px darken($primary, 20%);
+      padding: 1rem;
+      border-radius: $borderRadius;
+      background: #fff;
+      transition: transform 0.3s;
+      animation: 1s ease forwards;
+      opacity: 0;
+      height: auto;
+      img {
+        width: 100%;
+        height: 40%;
+        object-fit: cover;
+      }
+      &:hover {
+        transform: scale(1.1);
+      }
+      h3 {
+        color: $primary;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      p {
+        line-height: 1.2rem;
+      }
+    }
+    @for $i from 1 through 3 {
+      .card:nth-child(#{$i}) {
+        animation-delay: $i / 5 + 0s;
+      }
+    }
+  }
+  & > img {
+    position: absolute;
+    left: 0;
+    z-index: -21;
+    bottom: -100px;
+    width: 100%;
+    object-fit: cover;
+    transform: scaleY(0.8);
+  }
+}
+
+@keyframes swipe {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media (max-width: 900px) {
+  .grid-card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .card {
+      min-width: 50%;
+      margin: 1.5rem 0;
+    }
+  }
+}
+@media (max-width: 600px) {
+  .grid-card {
+    .card {
+      min-width: 70%;
+    }
+  }
+}

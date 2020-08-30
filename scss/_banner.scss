@@ -1,0 +1,33 @@
+.banner {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem * 2;
+  background: linear-gradient(rgba($primary, 0.3), rgba($primary, 0.3)),
+    url("../assets/bannerimg.png") no-repeat;
+  background-size: cover;
+  h1 {
+    color: white;
+    font-size: 2.5rem;
+  }
+  button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.5rem;
+    background: $primary;
+    color: $secondary;
+    font-weight: bolder;
+  }
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+@supports (background-attachment: fixed) {
+  .banner {
+    background-attachment: fixed;
+  }
+}

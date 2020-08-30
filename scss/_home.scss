@@ -1,0 +1,211 @@
+.home {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  nav {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform-origin: top;
+    .brand {
+      display: flex;
+      margin-left: $marginLeft;
+      cursor: pointer;
+      h2 {
+        color: $primary;
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+      img {
+        width: 40px;
+      }
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 25px;
+      cursor: pointer;
+      position: absolute;
+      left: 10%;
+
+      width: 30px;
+      span {
+        background: $secondary;
+        z-index: 2;
+        display: block;
+        border-radius: 5px;
+        width: 100%;
+        height: 4px;
+      }
+    }
+    ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      translate: none;
+      li {
+        margin: 0 1rem;
+        a {
+          text-decoration: none;
+          color: $primary;
+          padding: 0.35rem 1rem;
+          font-weight: bolder;
+          display: inline-block;
+          transition: 0.4s;
+          &:hover {
+            transform: scale(1.2);
+          }
+          &.active {
+            background: $secondary;
+            border-radius: $borderRadius;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    margin: $marginLeft;
+    h1 {
+      font-weight: bolder;
+      font-size: 3em;
+      color: $primary;
+      transform-origin: bottom;
+      opacity: 0;
+      animation: wipeUP 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    }
+    p {
+      color: $primary;
+      font-size: 1.5em;
+      opacity: 0;
+      transform-origin: bottom;
+      animation: wipeUP 1s 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    }
+    button {
+      color: $primary;
+      background: $secondary;
+      border: none;
+      border-radius: $borderRadius;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      transform-origin: bottom;
+      cursor: pointer;
+      opacity: 0;
+      animation: wipeUP 1s 0.6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    }
+  }
+
+  .arrowdown-svg {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    animation: comedown 1s alternate linear infinite;
+  }
+}
+.food-svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+  width: 35%;
+  opacity: 0;
+  animation: fade 0.2s 1.2s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+  transition: all 1s;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes wipeUP {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) transformz;
+  }
+}
+
+@keyframes comedown {
+  from {
+    bottom: 10%;
+  }
+  to {
+    bottom: 2%;
+  }
+}
+@media (max-width: 1024px) and (min-height: 1200px) {
+  .home {
+    height: 50%;
+  }
+}
+@media (min-width: 1000px) {
+  nav {
+    ul {
+      .logo {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .home {
+    nav {
+      justify-content: center;
+      .burger {
+        display: flex;
+      }
+    }
+    ul {
+      .logo {
+        display: block;
+        color: $primary;
+        font-weight: bolder;
+        font-size: 3rem;
+      }
+      transition: transform 0s;
+      transform: translateX(-100%);
+      display: flex;
+      position: fixed;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      z-index: 200;
+      width: 300px;
+      padding: 5rem;
+      height: 100vh;
+      background: #001723;
+      li:not(.logo) {
+        margin: 2rem 0;
+      }
+    }
+    .content {
+      font-size: 0.8rem;
+    }
+  }
+  .food-svg {
+    transform-origin: top;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 700px) {
+  .food-svg {
+    top: 40%;
+    transform: scaleX(3);
+  }
+}
